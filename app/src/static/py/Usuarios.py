@@ -24,11 +24,11 @@ usuarios=[
     },
     {
         "primer nombre":"Pedro",
-        "Segundo nombre":"",
+        "Segundo nombre":"Luis",
         "primer apellido":"Blanco",
         "Segundo apellido":"Villamizar",
         "correo":"pedroblanco@uninorte.edu.co",
-        "contraseña":"Pvillamizar12345"
+        "contraseña":"Pblanco12345"
     },
     {
         "primer nombre":"Miguel",
