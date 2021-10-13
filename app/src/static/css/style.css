@@ -58,3 +58,9 @@ footer{
     padding-right: 5px;
 }
 
+.container{
+
+    display: inline-flexbox;
+    position: relative;
+}
+
