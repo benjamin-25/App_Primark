@@ -2,7 +2,8 @@
 
 {% block contenido %}
 
-{% if error %}
+    {% if error %}
+
     <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
         <div>
@@ -10,30 +11,55 @@
         </div>
     </div>
 
-    <form class="formulario" action="/validar_usuario" method="POST">
-                
-        <label for="Correo">Correo Electronico</label>
-        <input class="form-control" id="Correo" type="email" class="form-control" name="correo" required>
-        <br>
-        <label for="Contraseña">Contraseña</label>
-        <input class="form-control" id="Contraseña" type="password" class="form-control" name="contraseña" required>
-        <br>
-        <button class="btn btn-primary" type="submit">Enviar</button>
-    </form>
+    <form class="formulario" method="POST" action="validar_usuario" novalidate>
+        {{form.hidden_tag()}}
 
-{% else %}
-
-    <form class="formulario" action="/validar_usuario" method="POST">
         
-        <label for="Correo">Correo Electronico</label>
-        <input class="form-control" id="Correo" type="email" class="form-control" name="correo" required>
+        {{form.correo.label}}
+        {{form.correo(size=30)}}
+        {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
         <br>
-        <label for="Contraseña">Contraseña</label>
-        <input class="form-control" id="Contraseña" type="password" class="form-control" name="contraseña" required>
-        <br>
-        <button class="btn btn-primary" type="submit">Enviar</button>
-    </form>
-    
-{% endif %}
 
+        
+        {{form.contraseña.label}}
+        {{form.contraseña(size=30)}}
+        {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <br>
+        
+        {{form.enviar()}}
+    </form>
+
+
+    {% else %}
+
+    <form class="formulario" method="POST" action="validar_usuario" novalidate>
+        {{form.hidden_tag()}}
+
+        
+        {{form.correo.label}}
+        {{form.correo(size=30)}}
+        {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <br>
+
+        
+        {{form.contraseña.label}}
+        {{form.contraseña(size=30)}}
+        {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <br>
+        
+        {{form.enviar()}}
+    </form>
+
+    {% endif %}
+
+
+        
 {% endblock %}

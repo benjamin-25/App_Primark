@@ -3,7 +3,7 @@ from flask import render_template
 from flask import url_for
 from flask import jsonify
 from static.py.Usuarios import usuarios
-from src.App import Apps
+from app import apps
 
 
 app= Flask(__name__)
