@@ -43,6 +43,15 @@ body {
     padding-left:380px;
 }
 
+.dropdown-menu.show{
+
+    z-index: 1;
+}
+.carousel.slide{
+
+    z-index: -1;
+}
+
 
 footer{
 
@@ -58,9 +67,25 @@ footer{
     padding-right: 5px;
 }
 
-.container{
-    margin: 10px;
-    display: inline-flexbox;
-    position: relative;
+
+.contenedor{
+
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    display: grid;
+    grid-template-columns: repeat(3, 200fr);
+    grid-template-rows: repeat(1,100%);
+    padding: 30px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  
 }
 
+
+.card{
+    
+    width: 300px;
+    position: relative;
+}

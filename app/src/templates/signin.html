@@ -2,44 +2,219 @@
 
 {% block contenido %}
 
-<div class="">
+{% if status %}
 
-    <form class="formulario" action="" method="">
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+            Estupendo, Registrado Exitosamente!!
+        </div>
+    </div>
 
-        <label for="Documento" class="col-form-label">Tipo Documento</label>
-        <select name="select" class="form-select" required>
-            <option name="" value="" class="form-control"></option>
-            <option name="" value="CC" class="form-control">Cedula de Ciudadania</option>
-            <option name="" value="TI" class="form-control">Tarjeta de Identidad</option>
-        </select>
+    <form class="formulario" action="registrar_usuario" method="POST" novalidate>
+        {{form.hidden_tag()}}
+        
         <br>
-        <label for="Numero Documento">Numero Documento</label>
-        <input class="form-control" type="text" class="col-form-label" required>
+        
+        {{form.tipo.label}}
+        {{form.tipo(class_='form-select',size=auto)}}
+        
         <br>
-        <label for="Primer Nombre">Primer Nombre</label>
-        <input class="form-control" type="text" class="col-form-label" required>
+       
+        {{form.documento.label}}
+        {{form.documento(class_='form-control', size=auto)}}
+        {% for error in form.documento.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Segundo Nombre">Segundo Nombre</label>
-        <input class="form-control" type="text" class="col-form-label" required>
+        
+        {{form.primer_nombre.label}}
+        {{form.primer_nombre(class_='form-control',size=auto)}}
+        {% for error in form.primer_nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Primer Apellido">Primer Apellido</label>
-        <input class="form-control" type="text" class="col-form-label" required>
+        
+        {{form.segundo_nombre.label}}
+        {{form.segundo_nombre(class_='form-control',size=auto)}}
+        {% for error in form.segundo_nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Segundo Apellido">Segundo Apellido</label>
-        <input class="form-control" type="text" class="col-form-label" required>
+        
+        {{form.primer_apellido.label}}
+        {{form.primer_apellido(class_='form-control',size=auto)}}
+        {% for error in form.primer_apellido.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Nombre">Fecha de Nacimiento</label>
-        <input class="form-control" type="date" class="col-form-label" required>
+        
+        {{form.segundo_apellido.label}}
+        {{form.segundo_apellido(class_='form-control',size=auto)}}
+        {% for error in form.segundo_apellido.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Nombre">Correo Electronico</label>
-        <input class="form-control" type="text" class="form-control col-form-label" placeholder="name@example.com" required>
+        
+        {{form.fecha_nacimiento.label}}
+        {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+        {% for error in form.fecha_nacimiento.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <label for="Contraseña">Contraseña</label>
-        <input class="form-control" type="password" class="col-form-label" required>
+        
+        {{form.correo.label}}
+        {{form.correo(class_='form-control',size=auto)}}
+        {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
         <br>
-        <button class="btn btn-primary" type="submit">Enviar</button>
+        
+        {{form.contraseña.label}}
+        {{form.contraseña(class_='form-control',size=auto)}}
+        {% for error in form.contraseña.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        
+        <br>
+        
+        {{form.enviar(class_='btn btn-primary')}}
+        
+        
+        
     </form>
+
+{% elif error %}
+
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+            Error, no pudo Registrarse correctamente favor intente de nuevo.
+        </div>
+    </div>
+
+    <form class="formulario" action="registrar_usuario" method="POST">
+        {{form.hidden_tag()}}
+        
+        <br>
+        
+        {{form.tipo.label}}
+        {{form.tipo(class_='form-select',size=auto)}}
+        
+        <br>
     
-</div>
+        {{form.documento.label}}
+        {{form.documento(class_='form-control', size=auto)}}
+        
+        <br>
+        
+        {{form.primer_nombre.label}}
+        {{form.primer_nombre(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.segundo_nombre.label}}
+        {{form.segundo_nombre(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.primer_apellido.label}}
+        {{form.primer_apellido(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.segundo_apellido.label}}
+        {{form.segundo_apellido(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.fecha_nacimiento.label}}
+        {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.correo.label}}
+        {{form.correo(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.contraseña.label}}
+        {{form.contraseña(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.enviar(class_='btn btn-primary')}}
+        
+        
+        
+    </form>
+
+{% else %}
+
+    <form class="formulario" action="registrar_usuario" method="POST">
+        {{form.hidden_tag()}}
+        
+        <br>
+        
+        {{form.tipo.label}}
+        {{form.tipo(class_='form-select',size=auto)}}
+        
+        <br>
+    
+        {{form.documento.label}}
+        {{form.documento(class_='form-control', size=auto)}}
+        
+        <br>
+        
+        {{form.primer_nombre.label}}
+        {{form.primer_nombre(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.segundo_nombre.label}}
+        {{form.segundo_nombre(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.primer_apellido.label}}
+        {{form.primer_apellido(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.segundo_apellido.label}}
+        {{form.segundo_apellido(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.fecha_nacimiento.label}}
+        {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.correo.label}}
+        {{form.correo(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.contraseña.label}}
+        {{form.contraseña(class_='form-control',size=auto)}}
+        
+        <br>
+        
+        {{form.enviar(class_='btn btn-primary')}}
+        
+        
+        
+    </form>
+
+{% endif %}
+    
 
 {% endblock %}
