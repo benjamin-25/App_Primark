@@ -60,6 +60,13 @@ footer{
 
 .container{
     margin: 10px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.containerline{
+    margin: 10px;
     display: inline-flexbox;
     position: relative;
 }
