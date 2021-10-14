@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request, abort
 from controllers.forms import FormLogin
 from static.py.Usuarios import usuarios
+from controllers.forms import FormContacto
 
 
 
@@ -24,7 +25,8 @@ def compras():
     return render_template('compras.html')
 
 def contactenos():
-    return render_template('contactenos.html')
+    form=FormContacto()   
+    return render_template('contactenos.html', form=form)   
 
 def evaluar():
     return render_template('evaluar.html')
@@ -50,3 +52,7 @@ def validarUsuario():
     error=True
     return render_template('login.html',error=error, form=form)
         
+def contactForm():
+    form=FormContacto()
+    mess=request.form['textarea']
+    return redirect('mailto:acurango@uninorte.edu.co?body='+str(mess))
