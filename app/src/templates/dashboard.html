@@ -1,0 +1,104 @@
+{% if nombre %}
+
+  {% extends './User/layout_user.html' %}
+
+   <div class="container">
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Hombre</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Mujeres</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Tecnologia</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    
+  </div>
+
+    <div>
+        <h2>Gestión de Usuarios</h2>
+        <div>Users</div>
+        <h2>Gestión de Productos</h2>
+        <div>Productos</div>
+    </div>
+
+  
+  {% block conten %}
+
+  {% endblock %}
+
+{% else %}
+
+  {% extends 'layout.html' %}
+
+  {% block contenido %}
+ <div class="containerline">
+
+  <div class="card-body">
+    <a href="#" class="btn btn-primary">Ir</a>
+  </div>
+
+  <div class="card-body">
+    <a href="#" class="btn btn-primary">Ir</a>
+  </div>
+
+  <div class="card-body">
+    <a href="#" class="btn btn-primary">Ir</a>
+  </div>
+
+
+  </div>
+
+
+  <div class="containerline">
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Usuarios/h5>
+        <p class="card-text">XYZ.</p>
+        <a href="#" class="btn btn-primary">Ir</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Usuarios/h5>
+        <p class="card-text">XYZ.</p>
+        <a href="#" class="btn btn-primary">Ir</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Usuarios/h5>
+        <p class="card-text">XYZ.</p>
+        <a href="#" class="btn btn-primary">Ir</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  {% endblock %}
+{% endif %}

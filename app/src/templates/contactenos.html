@@ -4,4 +4,21 @@
 
 <h1> Contactenos</h1>
 
+<div class="">
+
+    <form class="formulario" method="POST" action="mailto:acurango@uninorte.edu.co" novalidate>
+
+        <label for="Su Nombre">Nombre Completo</label>
+        <input class="form-control" type="text" class="col-form-label" required>
+        <br>
+        <label for="Nombre">Correo Electronico</label>
+        <input class="form-control" type="text" class="form-control col-form-label" placeholder="name@example.com" required>
+        <br>
+        <textarea name="body" class="form-control col-form-label">Escriba su consulta... </textarea>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Enviar">
+    </form>
+    
+</div>
+
 {% endblock %}
