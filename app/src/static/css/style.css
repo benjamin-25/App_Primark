@@ -74,9 +74,9 @@ footer{
     margin-right: auto;
     vertical-align: middle;
     display: grid;
-    grid-template-columns: repeat(3, 200fr);
+    grid-template-columns: repeat(7, 200fr);
     grid-template-rows: repeat(1,100%);
-    padding: 30px;
+    padding: 20px;
     align-content: center;
     align-items: center;
     text-align: center;
@@ -88,4 +88,14 @@ footer{
     
     width: 300px;
     position: relative;
+    margin: 8px;
+    height:400px;
+    transition: all 0.6s ease;
+    
+}
+
+.card:hover{
+
+    box-shadow: 0px 5px 8px 0px black;
+    transform: translate(0,-8px);
 }
