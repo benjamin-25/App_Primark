@@ -1,1 +1,0 @@
-validacion de correo, contraseña con un JSON, definir los metodos a utilizar GET - POST
