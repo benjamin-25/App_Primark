@@ -1,7 +1,23 @@
-{% extends 'layout.html' %}
+{% if nombre %}
 
-{% block contenido %}
+    {% extends './User/layout_user.html' %}
 
-<h1> Contactenos</h1>
+    {% block conten %}
+  
+    <h2>Contactenos</h2>
 
-{% endblock %}
+
+    {% endblock %}
+
+{% else %}
+
+
+    {% extends 'layout.html' %}
+
+    {% block contenido %}
+
+    <h1> Contactenos</h1>
+
+    {% endblock %}
+
+{% endif %}

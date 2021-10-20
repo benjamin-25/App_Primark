@@ -2,87 +2,86 @@
 
   {% extends './User/layout_user.html' %}
 
-  <div id="BannerUser1" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 1.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 2.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 4.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#BannerUser1" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#BannerUser1" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-      </button>
-  </div>
-
-  <br>
-
-  <div class="contenedor">
-    
-    <div class="card">
-      <img src="{{url_for('static',filename='./img/cards/Hombre.jpg')}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hombre</h5>
-        <p class="card-text">Encuentra todo lo relacionado a los Hombres aquí.</p>
-        <a href="#" class="btn btn-primary">Ver Más</a>
-      </div>
-    </div>
-  
-    <div class="card">
-      <img src="{{url_for('static',filename='./img/cards/Mujer.jpg')}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Mujeres</h5>
-        <p class="card-text">Encuentra todo lo relacionado a las Mujeres aquí.</p>
-        <a href="#" class="btn btn-primary">Ver Más</a>
-      </div>
-    </div>
-  
-    <div class="card">
-      <img src="{{url_for('static',filename='./img/cards/tecnologia.jpg')}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Tecnologia</h5>
-        <p class="card-text">Encuentra todo lo relacionado con la Tecnologia aquí.</p>
-        <a href="#" class="btn btn-primary">Ver Más</a>
-      </div>
-    </div>
-  
-  </div>
-
-  <br>
-
-  <div id="BannerUser2" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 1.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 3.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static',filename='./img/Banners/Banner 4.jpg')}}" class="d-block w-100" alt="...">
-          </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#BannerUser2" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#BannerUser2" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-      </button>
-  </div>
-
-  
   {% block conten %}
+
+    <div id="BannerUser1" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 1.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 2.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 4.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#BannerUser1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#BannerUser1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <br>
+
+    <div class="contenedor">
+      
+      <div class="card">
+        <img src="{{url_for('static',filename='./img/cards/Hombre.jpg')}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Hombre</h5>
+          <p class="card-text">Encuentra todo lo relacionado a los Hombres aquí.</p>
+          <a href="#" class="btn btn-primary">Ver Más</a>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="{{url_for('static',filename='./img/cards/Mujer.jpg')}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Mujeres</h5>
+          <p class="card-text">Encuentra todo lo relacionado a las Mujeres aquí.</p>
+          <a href="#" class="btn btn-primary">Ver Más</a>
+        </div>
+      </div>
+    
+      <div class="card">
+        <img src="{{url_for('static',filename='./img/cards/tecnologia.jpg')}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Tecnologia</h5>
+          <p class="card-text">Encuentra todo lo relacionado con la Tecnologia aquí.</p>
+          <a href="#" class="btn btn-primary">Ver Más</a>
+        </div>
+      </div>
+    
+    </div>
+
+    <br>
+
+    <div id="BannerUser2" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 1.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 3.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='./img/Banners/Banner 4.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#BannerUser2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#BannerUser2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
   {% endblock %}
 

@@ -1,7 +1,22 @@
-{% extends 'layout.html' %}
+{% if nombre %}
 
-{% block contenido %}
+    {% extends './User/layout_user.html' %}
 
-<h1>Favoritos</h1>
+    {% block conten %}
+  
+        <h2>Tus Favoritos</h2>
+  
 
-{% endblock %}
+    {% endblock %}
+
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {% block contenido %}
+
+        <h1>Favoritos</h1>
+
+    {% endblock %}
+
+{% endif %}

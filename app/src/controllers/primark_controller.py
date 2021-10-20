@@ -2,11 +2,15 @@ from flask import render_template, redirect, url_for, request, abort
 from controllers.forms import FormLogin, FormSignin
 from static.py.Usuarios import usuarios
 from static.py.newusuario import newusuarios
+from flask import session,redirect
 
 
 
 def index():
-    return render_template('index.html')
+    if 'user' in session:
+        return render_template('index.html',nombre=session['user'])
+    else:
+        return render_template('index.html')
 
 def login():
     form=FormLogin()   
@@ -17,21 +21,40 @@ def signin():
     return render_template('signin.html',form=formSig)
 
 def favoritos():
-    return render_template('favoritos.html')
+    if 'user' in session:
+        return render_template('favoritos.html',nombre=session['user'])
+    else:
+        return render_template('favoritos.html')
 
 def productos():
-    return render_template('productos.html')
+    if 'user' in session:
+        return render_template('productos.html',nombre=session['user'])
+    else:
+        return render_template('productos.html')
 
 def compras():
-    return render_template('compras.html')
+    if 'user' in session:
+        return render_template('compras.html',nombre=session['user'])
+    else:
+        return render_template('compras.html')
 
 def contactenos():
-    return render_template('contactenos.html')
+    if 'user' in session:
+        return render_template('contactenos.html',nombre=session['user'])
+    else:
+        return render_template('contactenos.html')
 
 def evaluar():
-    return render_template('evaluar.html')
+    if 'user' in session:
+        return render_template('evaluar.html',nombre=session['user'])
+    else:
+        return render_template('evaluar.html')
 
 
+def logout():
+    if 'user' in session:
+        session.pop('user')
+    return redirect(url_for('index'))
 
 def validarUsuario():
     
@@ -48,7 +71,8 @@ def validarUsuario():
             if(users['correo']==correo and users['contraseña']==contraseña):
                 nombre=users['primer nombre']
                 apellido=users['primer apellido']
-                return render_template('index.html',nombre=nombre , apellido=apellido)
+                estado=session['user']=nombre
+                return render_template('index.html',nombre=estado)
     error=True
     return render_template('login.html',error=error, form=form)
 

@@ -1,7 +1,21 @@
-{% extends 'layout.html' %}
+{% if nombre %}
 
-{% block contenido %}
+    {% extends './User/layout_user.html' %}
 
-<h1> Bienvenido a la pagina Productos</h1>
+    {% block conten %}
+  
+        <h2>Compras</h2>
+  
+    {% endblock %}
 
-{% endblock %}
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {% block contenido %}
+
+        <h1> Bienvenido a la pagina Productos</h1>
+
+    {% endblock %}
+
+{% endif %}

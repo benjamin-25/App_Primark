@@ -1,8 +1,22 @@
-{% extends 'layout.html' %}
+{% if nombre %}
 
-{%  block contenido %}
+    {% extends './User/layout_user.html' %}
+
+    {% block conten %}
+  
+        <h2>Compras</h2>
+  
+    {% endblock %}
+
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {%  block contenido %}
 
 
-<h2>Tus Compras</h2>
+        <h2>Tus Compras</h2>
 
-{%  endblock %}
+    {%  endblock %}
+
+{% endif %}

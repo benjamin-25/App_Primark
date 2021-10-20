@@ -1,6 +1,22 @@
-{% extends 'layout.html' %}
-{% block contenido %}
+{% if nombre %}
 
-<h2> Califica nuestros servicios</h2>
+    {% extends './User/layout_user.html' %}
 
-{%  endblock %}
+    {% block conten %}
+  
+    <h2> Califica nuestros servicios</h2>
+  
+
+    {% endblock %}
+
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {% block contenido %}
+
+    <h2> Califica nuestros servicios</h2>
+
+    {%  endblock %}
+
+{% endif %}
