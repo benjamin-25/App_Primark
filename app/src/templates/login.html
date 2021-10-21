@@ -4,61 +4,95 @@
 
     {% if error %}
 
-    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-        <div>
-            Error, Correo electronico o Contraseña Incorrecta favor verifique.
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                Error, Correo electronico o Contraseña Incorrecta favor verifique.
+            </div>
         </div>
-    </div>
 
-    <form class="formulario" method="POST" action="validar_usuario">
-        {{form.hidden_tag()}}
+        <form class="formulario" method="POST" action="validar_usuario">
+            {{form.hidden_tag()}}
 
-        <p>
-            {{form.correo.label}}
-            {{form.correo(class_='form-control',size=30)}}
-            {% for error in form.correo.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </p>
-        <br>
-        <p>
-            {{form.contraseña.label}}
-            {{form.contraseña(class_='form-control',size=30)}}
-            {% for error in form.correo.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </p>
-        <br>
-        
-        {{form.enviar(class_='btn btn-primary')}}
-    </form>
+            <p>
+                {{form.correo.label}}
+                {{form.correo(class_='form-control',size=30)}}
+                {% for error in form.correo.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <br>
+            <p>
+                {{form.contraseña.label}}
+                {{form.contraseña(class_='form-control',size=30)}}
+                {% for error in form.correo.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+        </form>
+
+
+    {% elif error2 %}
+
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                Error, Usuario no existe favor verifique.
+            </div>
+        </div>
+
+        <form class="formulario" method="POST" action="validar_usuario">
+            {{form.hidden_tag()}}
+
+            <p>
+                {{form.correo.label}}
+                {{form.correo(class_='form-control',size=30)}}
+                {% for error in form.correo.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <br>
+            <p>
+                {{form.contraseña.label}}
+                {{form.contraseña(class_='form-control',size=30)}}
+                {% for error in form.correo.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+        </form>
+
 
 
     {% else %}
 
-    <form class="formulario" method="POST" action="validar_usuario">
-        {{form.hidden_tag()}}
+        <form class="formulario" method="POST" action="validar_usuario">
+            {{form.hidden_tag()}}
 
-        
-        {{form.correo.label}}
-        {{form.correo(class_='form-control',size=auto)}}
-        {% for error in form.correo.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.contraseña.label}}
-        {{form.contraseña(class_='form-control',size=auto)}}
-        {% for error in form.correo.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.enviar(class_='btn btn-primary')}}
-    </form>
+            
+            {{form.correo.label}}
+            {{form.correo(class_='form-control',size=auto)}}
+            {% for error in form.correo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.contraseña.label}}
+            {{form.contraseña(class_='form-control',size=auto)}}
+            {% for error in form.correo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+        </form>
 
     {% endif %}
 
