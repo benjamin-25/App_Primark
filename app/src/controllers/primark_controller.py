@@ -139,8 +139,8 @@ def registrarUsuario():
 
 
         if resultado!=0:
-            registrado=True
-            return render_template('signin.html',status=registrado, form=formSig)
+            flash('Estupendo, Registrado Exitosamente!!')
+            return redirect(url_for('signin'))
 
         else:
 
