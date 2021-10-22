@@ -7,7 +7,7 @@
         <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
             <div>
-                Error, Correo electronico o Contraseña Incorrecta favor verifique.
+                Error, Correo electronico o Contraseña Incorrectos favor verifique.
             </div>
         </div>
 
@@ -40,7 +40,7 @@
         <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
             <div>
-                Error, Usuario no existe favor verifique.
+                Error, Usuario no registrado favor registrese o verifique su correo.
             </div>
         </div>
 
@@ -71,6 +71,13 @@
 
     {% else %}
 
+        {% for msg in get_flashed_messages() %}
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>{{ msg }}</div>
+        </div>
+        {% endfor %}
+
         <form class="formulario" method="POST" action="validar_usuario">
             {{form.hidden_tag()}}
 
@@ -93,6 +100,8 @@
             
             {{form.enviar(class_='btn btn-primary')}}
         </form>
+
+
 
     {% endif %}
 

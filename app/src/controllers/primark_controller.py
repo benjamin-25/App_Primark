@@ -1,11 +1,10 @@
-from unittest import result
-from flask import render_template, redirect, url_for, request, abort
+from flask import render_template, redirect, url_for, request, flash
 from controllers.forms import FormLogin, FormSignin
 from static.py.Usuarios import usuarios
 from static.py.newusuario import newusuarios
 from flask import session,redirect
 from db_primark import connection, close_db
-import sqlite3
+from werkzeug.security import check_password_hash, generate_password_hash
 from sqlite3 import Error
 
 
@@ -73,62 +72,81 @@ def validarUsuario():
         resul=None
         con=connection()
 
-        sql= 'SELECT * FROM usuarios WHERE Correo ="{0}" AND Contraseña="{1}"'.format(correo,contraseña)
+        sql= 'SELECT * FROM usuarios WHERE Correo ="{0}"'.format(correo)
         try:
             CursorObj= con.cursor()
             CursorObj.execute(sql)
             resul = CursorObj.fetchall()
-        
+            con.commit()
+            close_db()
+
         except Error as err:
                 print(err)
         
-        if resul is None:
+        if len(resul) == 0:
             error2=True
             return render_template('login.html',error=error2, form=form)
         
         else:
-            estado=session['user']=resul[0][2]
-            return render_template('index.html',nombre=estado)
-    '''
-        for users in usuarios:
-            if(users['correo']==correo and users['contraseña']==contraseña):
-                nombre=users['primer nombre']
-                apellido=users['primer apellido']
-                estado=session['user']=nombre
+            
+            pwd = resul[0][8]
+            if check_password_hash(pwd,contraseña):
+
+                estado=session['user']=resul[0][2]
                 return render_template('index.html',nombre=estado)
-    '''
+
+            else:
+                flash('Error, Usuario o clave invalidas','error')
+                return render_template('login.html',form=form)
+    
+    
     error=True
     return render_template('login.html',error=error, form=form)
 
 
 def registrarUsuario():
-    form=FormSignin()
-    if(form.validate_on_submit()):
-        tipo=form.tipo.data
-        documento=form.documento.data
-        primer_nombre=form.primer_nombre.data
-        segundo_nombre=form.segundo_nombre.data
-        primer_apellido=form.primer_apellido.data
-        segundo_apellido=form.segundo_apellido.data
-        fecha_nacimiento=form.fecha_nacimiento.data
-        correo=form.correo.data
-        contraseña=form.contraseña.data
+
+    formSig=FormSignin()
+
+    if(formSig.validate_on_submit()):
+        tipo=formSig.tipo.data
+        documento=formSig.documento.data
+        primer_nombre=formSig.primer_nombre.data
+        segundo_nombre=formSig.segundo_nombre.data
+        primer_apellido=formSig.primer_apellido.data
+        segundo_apellido=formSig.segundo_apellido.data
+        fecha_nacimiento=formSig.fecha_nacimiento.data
+        correo=formSig.correo.data
+        contraseña=formSig.contraseña.data
         
         registrado=False
         
-        newusuarios=dict(tipo=tipo,
-                    documento=documento,
-                    primer_nombre=primer_nombre,
-                    segundo_nombre=segundo_nombre,
-                    primer_apellido=primer_apellido,
-                    segundo_apellido=segundo_apellido,
-                    fecha_nacimiento=fecha_nacimiento,
-                    correo=correo,
-                    contraseña=contraseña)
+        pwd = generate_password_hash(contraseña)
+        con=connection()
+
+        sql= 'INSERT into usuarios (Tipo,Documento,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,Correo,Contraseña ) values (?,?,?,?,?,?,?,?,?)'
         
-        if newusuarios.get('documento')==documento:
+
+        try:
+
+            CursorObj=con.cursor()
+            resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,correo,pwd]).rowcount
+            con.commit()
+            close_db()
+
+        except Error as err:
+            print(err)
+
+
+        if resultado!=0:
             registrado=True
-            return render_template('signin.html',status=registrado, form=form)
+            return render_template('signin.html',status=registrado, form=formSig)
+
+        else:
+
+            error=True
+            return render_template('signin.html',error=error, form=formSig)
+
     error=True
-    return render_template('signin.html',error=error, form=form)
+    return render_template('signin.html',error=error, form=formSig)
         

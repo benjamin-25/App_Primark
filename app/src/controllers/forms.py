@@ -1,7 +1,7 @@
 from email import message
 from sqlite3 import DatabaseError
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,SelectField,DateField 
+from wtforms import StringField,PasswordField,SubmitField,SelectField,DateField
 from wtforms.validators import DataRequired
 
 
