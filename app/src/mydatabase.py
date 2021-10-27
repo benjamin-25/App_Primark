@@ -4,7 +4,7 @@ from sqlite3 import Error
 def connection():
 
     try:
-        db = sqlite3.connect('db_primark.db')
+        db = sqlite3.connect('mydatabase.db')
         return db
 
     except Error:

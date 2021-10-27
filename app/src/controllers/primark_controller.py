@@ -1,9 +1,10 @@
+from contextlib import nullcontext
 from flask import render_template, redirect, url_for, request, flash
 from controllers.forms import FormLogin, FormSignin
 from static.py.Usuarios import usuarios
 from static.py.newusuario import newusuarios
 from flask import session,redirect
-from db_primark import connection, close_db
+from mydatabase import connection, close_db
 from werkzeug.security import check_password_hash, generate_password_hash
 from sqlite3 import Error
 
@@ -72,7 +73,7 @@ def validarUsuario():
         resul=None
         con=connection()
 
-        sql= 'SELECT * FROM usuarios WHERE Correo ="{0}"'.format(correo)
+        sql= 'SELECT * FROM Personas WHERE CorreoElectronico ="{0}"'.format(correo)
         try:
             CursorObj= con.cursor()
             CursorObj.execute(sql)
@@ -89,7 +90,7 @@ def validarUsuario():
         
         else:
             
-            pwd = resul[0][8]
+            pwd = resul[0][10]
             if check_password_hash(pwd,contraseña):
 
                 estado=session['user']=resul[0][2]
@@ -120,23 +121,25 @@ def registrarUsuario():
         contraseña=formSig.contraseña.data
         
         registrado=False
+        TipoUser='Null'
+        Permiso='Null'
         
         pwd = generate_password_hash(contraseña)
         con=connection()
 
-        sql= 'INSERT into usuarios (Tipo,Documento,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,Correo,Contraseña ) values (?,?,?,?,?,?,?,?,?)'
+        sql= 'INSERT into Personas (TipoIdentificacion,NumeroIdentificacion,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,TipoUsuario,Permisos,CorreoElectronico,Contraseña ) values (?,?,?,?,?,?,?,?,?,?,?)'
         
 
         try:
 
             CursorObj=con.cursor()
-            resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,correo,pwd]).rowcount
+            resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd]).rowcount
             con.commit()
             close_db()
-
+            print(resultado)
         except Error as err:
             print(err)
-
+            
 
         if resultado!=0:
             flash('Estupendo, Registrado Exitosamente!!')
