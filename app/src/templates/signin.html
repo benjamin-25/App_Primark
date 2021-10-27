@@ -3,188 +3,278 @@
 {% block contenido %}
 
 
-{% if error %}
+    {% if error %}
 
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <div>
-            Error, no pudo Registrarse correctamente favor intente de nuevo.
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                Error, no pudo Registrarse correctamente favor intente de nuevo.
+            </div>
         </div>
-    </div>
 
-    <form class="formulario" action="registrar_usuario" method="POST">
-        {{form.hidden_tag()}}
+        <form class="formulario" action="registrar_usuario" method="POST">
+            {{form.hidden_tag()}}
+            
+            <br>
+            
+            {{form.tipo.label}}
+            {{form.tipo(class_='form-select',size=auto)}}
+            
+            <br>
         
-        <br>
-        
-        {{form.tipo.label}}
-        {{form.tipo(class_='form-select',size=auto)}}
-        
-        <br>
-       
-        {{form.documento.label}}
-        {{form.documento(class_='form-control', size=auto)}}
-        {% for error in form.documento.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.primer_nombre.label}}
-        {{form.primer_nombre(class_='form-control',size=auto)}}
-        {% for error in form.primer_nombre.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.segundo_nombre.label}}
-        {{form.segundo_nombre(class_='form-control',size=auto)}}
-        {% for error in form.segundo_nombre.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.primer_apellido.label}}
-        {{form.primer_apellido(class_='form-control',size=auto)}}
-        {% for error in form.primer_apellido.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.segundo_apellido.label}}
-        {{form.segundo_apellido(class_='form-control',size=auto)}}
-        {% for error in form.segundo_apellido.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.fecha_nacimiento.label}}
-        {{form.fecha_nacimiento(class_='form-control',size=auto)}}
-        {% for error in form.fecha_nacimiento.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.correo.label}}
-        {{form.correo(class_='form-control',size=auto)}}
-        {% for error in form.correo.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.contraseña.label}}
-        {{form.contraseña(class_='form-control',size=auto)}}
-        {% for error in form.contraseña.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.enviar(class_='btn btn-primary')}}
-        
-        
-        
-    </form>
+            {{form.documento.label}}
+            {{form.documento(class_='form-control', size=auto)}}
+            {% for error in form.documento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_nombre.label}}
+            {{form.primer_nombre(class_='form-control',size=auto)}}
+            {% for error in form.primer_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_nombre.label}}
+            {{form.segundo_nombre(class_='form-control',size=auto)}}
+            {% for error in form.segundo_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_apellido.label}}
+            {{form.primer_apellido(class_='form-control',size=auto)}}
+            {% for error in form.primer_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_apellido.label}}
+            {{form.segundo_apellido(class_='form-control',size=auto)}}
+            {% for error in form.segundo_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.fecha_nacimiento.label}}
+            {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+            {% for error in form.fecha_nacimiento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.correo.label}}
+            {{form.correo(class_='form-control',size=auto)}}
+            {% for error in form.correo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.contraseña.label}}
+            {{form.contraseña(class_='form-control',size=auto)}}
+            {% for error in form.contraseña.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+            
+            
+            
+        </form>
 
-{% else %}
+    {% elif error2 %}
 
-    {% for msg in get_flashed_messages() %}
-    <div class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <div>
-            {{msg}}
-            <a href="{{url_for('login')}}" >Iniciar Sesion</a>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                Error!, ya existe un usuario registrado con ese Correo Electronico.
+            </div>
         </div>
-    </div>
-    {% endfor %}
 
-    <form class="formulario" action="registrar_usuario" method="POST">
-        {{form.hidden_tag()}}
+        <form class="formulario" action="registrar_usuario" method="POST">
+            {{form.hidden_tag()}}
+            
+            <br>
+            
+            {{form.tipo.label}}
+            {{form.tipo(class_='form-select',size=auto)}}
+            
+            <br>
         
-        <br>
-        
-        {{form.tipo.label}}
-        {{form.tipo(class_='form-select',size=auto)}}
-        
-        <br>
-    
-        {{form.documento.label}}
-        {{form.documento(class_='form-control', size=auto)}}
-        {% for error in form.documento.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.primer_nombre.label}}
-        {{form.primer_nombre(class_='form-control',size=auto)}}
-        {% for error in form.primer_nombre.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.segundo_nombre.label}}
-        {{form.segundo_nombre(class_='form-control',size=auto)}}
-        {% for error in form.segundo_nombre.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.primer_apellido.label}}
-        {{form.primer_apellido(class_='form-control',size=auto)}}
-        {% for error in form.primer_apellido.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.segundo_apellido.label}}
-        {{form.segundo_apellido(class_='form-control',size=auto)}}
-        {% for error in form.segundo_apellido.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.fecha_nacimiento.label}}
-        {{form.fecha_nacimiento(class_='form-control',size=auto)}}
-        {% for error in form.fecha_nacimiento.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.correo.label}}
-        {{form.correo(class_='form-control',size=auto)}}
-        {% for error in form.correo.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.contraseña.label}}
-        {{form.contraseña(class_='form-control',size=auto)}}
-        {% for error in form.contraseña.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        
-        <br>
-        
-        {{form.enviar(class_='btn btn-primary')}}
-        
-        
-        
-    </form>
+            {{form.documento.label}}
+            {{form.documento(class_='form-control', size=auto)}}
+            {% for error in form.documento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_nombre.label}}
+            {{form.primer_nombre(class_='form-control',size=auto)}}
+            {% for error in form.primer_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_nombre.label}}
+            {{form.segundo_nombre(class_='form-control',size=auto)}}
+            {% for error in form.segundo_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_apellido.label}}
+            {{form.primer_apellido(class_='form-control',size=auto)}}
+            {% for error in form.primer_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_apellido.label}}
+            {{form.segundo_apellido(class_='form-control',size=auto)}}
+            {% for error in form.segundo_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.fecha_nacimiento.label}}
+            {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+            {% for error in form.fecha_nacimiento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.correo.label}}
+            {{form.correo(class_='form-control',size=auto)}}
+            {% for error in form.correo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.contraseña.label}}
+            {{form.contraseña(class_='form-control',size=auto)}}
+            {% for error in form.contraseña.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+            
+            
+            
+        </form>
 
-{% endif %}
+
+    {% else %}
+
+        {% for msg in get_flashed_messages() %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                {{msg}}
+                <a href="{{url_for('login')}}" >Iniciar Sesion</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <form class="formulario" action="registrar_usuario" method="POST">
+            {{form.hidden_tag()}}
+            
+            <br>
+            
+            {{form.tipo.label}}
+            {{form.tipo(class_='form-select',size=auto)}}
+            
+            <br>
+        
+            {{form.documento.label}}
+            {{form.documento(class_='form-control', size=auto)}}
+            {% for error in form.documento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_nombre.label}}
+            {{form.primer_nombre(class_='form-control',size=auto)}}
+            {% for error in form.primer_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_nombre.label}}
+            {{form.segundo_nombre(class_='form-control',size=auto)}}
+            {% for error in form.segundo_nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.primer_apellido.label}}
+            {{form.primer_apellido(class_='form-control',size=auto)}}
+            {% for error in form.primer_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.segundo_apellido.label}}
+            {{form.segundo_apellido(class_='form-control',size=auto)}}
+            {% for error in form.segundo_apellido.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.fecha_nacimiento.label}}
+            {{form.fecha_nacimiento(class_='form-control',size=auto)}}
+            {% for error in form.fecha_nacimiento.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.correo.label}}
+            {{form.correo(class_='form-control',size=auto)}}
+            {% for error in form.correo.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.contraseña.label}}
+            {{form.contraseña(class_='form-control',size=auto)}}
+            {% for error in form.contraseña.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            
+            <br>
+            
+            {{form.enviar(class_='btn btn-primary')}}
+            
+            
+            
+        </form>
+
+    {% endif %}
     
 
 {% endblock %}

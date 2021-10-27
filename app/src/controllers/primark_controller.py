@@ -127,28 +127,44 @@ def registrarUsuario():
         pwd = generate_password_hash(contraseña)
         con=connection()
 
-        sql= 'INSERT into Personas (TipoIdentificacion,NumeroIdentificacion,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,TipoUsuario,Permisos,CorreoElectronico,Contraseña ) values (?,?,?,?,?,?,?,?,?,?,?)'
-        
-
+        sql1= 'SELECT * FROM Personas WHERE CorreoElectronico ="{0}"'.format(correo)
         try:
-
-            CursorObj=con.cursor()
-            resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd]).rowcount
+            CursorObj= con.cursor()
+            CursorObj.execute(sql1)
+            resul = CursorObj.fetchall()
             con.commit()
             close_db()
-            print(resultado)
+
         except Error as err:
-            print(err)
+                print(err)
+
+        if resul!=0:
+            error2=True
+            return render_template('signin.html',error=error2, form=formSig)
+        
+        else:
+            sql= 'INSERT into Personas (TipoIdentificacion,NumeroIdentificacion,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,TipoUsuario,Permisos,CorreoElectronico,Contraseña ) values (?,?,?,?,?,?,?,?,?,?,?)'
             
 
-        if resultado!=0:
-            flash('Estupendo, Registrado Exitosamente!!')
-            return redirect(url_for('signin'))
+            try:
 
-        else:
+                CursorObj=con.cursor()
+                resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd]).rowcount
+                con.commit()
+                close_db()
+                print(resultado)
+            except Error as err:
+                print(err)
+                
 
-            error=True
-            return render_template('signin.html',error=error, form=formSig)
+            if resultado!=0:
+                flash('Estupendo, Registrado Exitosamente!!')
+                return redirect(url_for('signin'))
+
+            else:
+
+                error=True
+                return render_template('signin.html',error=error, form=formSig)
 
     error=True
     return render_template('signin.html',error=error, form=formSig)
