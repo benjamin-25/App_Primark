@@ -1,8 +1,8 @@
 from contextlib import nullcontext
 from flask import render_template, redirect, url_for, request, flash
 from controllers.forms import FormLogin, FormSignin
-from static.database.Usuarios import usuarios
-from static.database.newusuario import newusuarios
+from static.py.Usuarios import usuarios
+from static.py.newusuario import newusuarios
 from flask import session,redirect
 from controllers.mydatabase_controller import connection, close_db
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -84,7 +84,7 @@ def validarUsuario():
         except Error as err:
                 print(err)
         
-        print(resul)
+        
         if len(resul) == 0:
             error2=True
             return render_template('login.html',error=error2, form=form)
@@ -170,3 +170,8 @@ def registrarUsuario():
     error=True
     return render_template('signin.html',error=error, form=formSig)
         
+
+# direcciones de Usuarios
+
+def perfil():
+    return render_template('./User/perfil.html')
