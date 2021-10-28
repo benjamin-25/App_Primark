@@ -174,4 +174,8 @@ def registrarUsuario():
 # direcciones de Usuarios
 
 def perfil():
-    return render_template('./User/perfil.html')
+    if 'user' in session:
+        return render_template('./User/perfil.html',nombre=session['user'])
+    else:
+        return redirect(url_for('login'))
+        

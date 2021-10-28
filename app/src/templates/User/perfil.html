@@ -1,7 +1,11 @@
-{% extends './User/layout_user.html' %}
+{% if nombre %}
 
-{% block contenido%}
+    {% extends './User/layout_user.html' %}
 
-<h2> Mi perfil</h2>
+    {% block conten %}
 
-{% endblock %}
+        <h2>Mi perfil</h2>
+
+    {% endblock %}
+
+{% endif %}
