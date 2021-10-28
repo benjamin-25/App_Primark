@@ -6,7 +6,7 @@
         
         <!-- fila1 --> 
             <div class="row1">
-                <h3>Datos Personales</h3>
+                <h3>Datos Basicos</h3>
                 <hr>
                 
             </div>
@@ -42,37 +42,49 @@
 
         <!-- fila3 --> 
                         
-            {% for user in datos%}
-                
-                <div class="row2">
-                    <p>Primer Nombre</p>
-                    {{datos[0][2]}}
-                </div>
-                <div class="row2">
-                    <p>Segundo Nombre</p>
-                    {{datos[0][3]}}
-                    
-                </div>
-                <div class="row2">
-                    <p>Primer Apellido</p>
-                    {{datos[0][4]}}
-                    
-                </div>
-                <div class="row2">
-                    <p>Segundo Apellido</p>
-                    {{datos[0][5]}}
-                    
-                </div>
-                <div class="row2">
-                    <p>Correo Electronico</p>
-                    {{datos[0][9]}}
-                    
-                </div>
-                
-                
-            {% endfor %}
-
             <div class="row2">
+                <p>Primer Nombre</p>
+                {{datos[0][2]}}
+            </div>
+            <div class="row2">
+                <p>Segundo Nombre</p>
+                {{datos[0][3]}}
+                
+            </div>
+            <div class="row2">
+                <p>Primer Apellido</p>
+                {{datos[0][4]}}
+                
+            </div>
+            <div class="row2">
+                <p>Segundo Apellido</p>
+                {{datos[0][5]}}
+                
+            </div>
+
+        <!-- fila 4 -->      
+    
+            <div class="row4">
+                <h3>Datos Personales</h3>
+                <hr>
+            </div>
+            <div class="row4">
+            </div>
+            <div class="row4">
+                    
+            </div>
+            <div class="row4">
+                
+            </div>
+
+        <!-- fila 5 -->
+        
+            <div class="row5">
+                <p>Correo Electronico</p>
+                {{datos[0][9]}}
+                
+            </div>
+            <div class="row4">
                 
             </div>
 
