@@ -4,7 +4,7 @@ from controllers.forms import FormLogin, FormSignin
 from static.py.Usuarios import usuarios
 from static.py.newusuario import newusuarios
 from flask import session,redirect
-from controllers.mydatabase_controller import connection, close_db
+from controllers.mydatabase_controller import connection, close_db, consultaPersona, crearPersona
 from werkzeug.security import check_password_hash, generate_password_hash
 from sqlite3 import Error
 
@@ -71,20 +71,9 @@ def validarUsuario():
         error=False
         nombre=None
         resul=None
-        con=connection()
 
-        sql= 'SELECT * FROM Personas WHERE CorreoElectronico ="{0}"'.format(correo)
-        try:
-            CursorObj= con.cursor()
-            CursorObj.execute(sql)
-            resul = CursorObj.fetchall()
-            con.commit()
-            close_db()
-
-        except Error as err:
-                print(err)
-        
-        
+        resul=consultaPersona(correo)
+                
         if len(resul) == 0:
             error2=True
             return render_template('login.html',error=error2, form=form)
@@ -95,6 +84,7 @@ def validarUsuario():
             if check_password_hash(pwd,contraseña):
 
                 estado=session['user']=resul[0][2]
+                datos=session['datos']=resul
                 return render_template('index.html',nombre=estado)
 
             else:
@@ -126,37 +116,16 @@ def registrarUsuario():
         Permiso='Null'
         
         pwd = generate_password_hash(contraseña)
-        con=connection()
-
-        sql1= 'SELECT * FROM Personas WHERE CorreoElectronico ="{0}"'.format(correo)
-        try:
-            CursorObj= con.cursor()
-            CursorObj.execute(sql1)
-            resul = CursorObj.fetchall()
-            con.commit()
-            close_db()
-
-        except Error as err:
-                print(err)
+        
+        resul=consultaPersona(correo)
 
         if resul!=0:
             error2=True
             return render_template('signin.html',error=error2, form=formSig)
         
         else:
-            sql= 'INSERT into Personas (TipoIdentificacion,NumeroIdentificacion,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,FechaNacimiento,TipoUsuario,Permisos,CorreoElectronico,Contraseña ) values (?,?,?,?,?,?,?,?,?,?,?)'
             
-
-            try:
-
-                CursorObj=con.cursor()
-                resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd]).rowcount
-                con.commit()
-                close_db()
-                print(resultado)
-            except Error as err:
-                print(err)
-                
+            resultado=crearPersona(tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd)    
 
             if resultado!=0:
                 flash('Estupendo, Registrado Exitosamente!!')
@@ -174,8 +143,8 @@ def registrarUsuario():
 # direcciones de Usuarios
 
 def perfil():
-    if 'user' in session:
-        return render_template('./User/perfil.html',nombre=session['user'])
+    if 'datos' in session:
+        return render_template('./User/perfil.html',datos=session['datos'])
     else:
         return redirect(url_for('login'))
         

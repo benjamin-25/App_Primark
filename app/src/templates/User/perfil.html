@@ -1,11 +1,82 @@
-{% if nombre %}
+{% extends './User/layout_user.html' %}
 
-    {% extends './User/layout_user.html' %}
+{% block contenido %}
 
-    {% block conten %}
+    <div class="contenedor2">
+        
+        <!-- fila1 --> 
+            <div class="row1">
+                <h3>Datos Personales</h3>
+                <hr>
+                
+            </div>
 
-        <h2>Mi perfil</h2>
+            <div class="row1">
+                
+            </div>
 
-    {% endblock %}
+            <div class="row1">
+                    
+            </div>
 
-{% endif %}
+            <div class="row1">
+                
+            </div>
+
+        <!-- fila2 --> 
+            <div class="row1">
+                <img src="{{url_for('static', filename="./img/User_Perfil.png")}}"> 
+            </div>
+
+            <div class="row1">
+                
+            </div>
+
+            <div class="row1">
+                    
+            </div>
+
+            <div class="row1">
+                
+            </div>
+
+        <!-- fila3 --> 
+                        
+            {% for user in datos%}
+                
+                <div class="row2">
+                    <p>Primer Nombre</p>
+                    {{datos[0][2]}}
+                </div>
+                <div class="row2">
+                    <p>Segundo Nombre</p>
+                    {{datos[0][3]}}
+                    
+                </div>
+                <div class="row2">
+                    <p>Primer Apellido</p>
+                    {{datos[0][4]}}
+                    
+                </div>
+                <div class="row2">
+                    <p>Segundo Apellido</p>
+                    {{datos[0][5]}}
+                    
+                </div>
+                <div class="row2">
+                    <p>Correo Electronico</p>
+                    {{datos[0][9]}}
+                    
+                </div>
+                
+                
+            {% endfor %}
+
+            <div class="row2">
+                
+            </div>
+
+
+    </div>
+
+{% endblock %}

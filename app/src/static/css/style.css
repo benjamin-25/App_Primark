@@ -83,6 +83,41 @@ footer{
   
 }
 
+.contenedor2{
+
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    vertical-align: middle;
+    display: grid;
+    grid-template-columns: repeat(4, 200fr);
+    grid-template-rows: repeat(5,200fr);
+    padding: 20px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  
+}
+
+.contenedor2 img{
+
+    height:130px;
+    width:130px;
+}
+
+.contenedor2 div{
+
+    align-content: initial;
+    text-align: left;
+}
+
+.contenedor2 p{
+
+    font-family: cursive;
+    font-style: normal;
+    font-size: larger;
+}
+
 
 .card{
     
