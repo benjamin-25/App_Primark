@@ -14,7 +14,87 @@
 
     {% block contenido %}
 
-        <h1> Bienvenido a la pagina Productos</h1>
+    <head>
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{url_for('static',filename='./css/style.css')}}">
+        
+    </head>
+    <body>
+        <section class="section-initial">
+            <div class="div-pr">
+                <img class="product-pr" src="{{url_for('static',filename='./img/products/pr-product.jpg')}}" alt="">
+            </div>
+            <div class="div-txt-pr">
+                <h2 class="title-initial">NUESTROS PRODUCTOS</h2>
+            </div>
+            <div class="sub-div-txt-pr">
+                <p class="sub-initial">¿No sabes que comprar?   
+                        En Primark tenemos un amplio y surtido catalogo de productos con muchas promociones
+                        y ofertas
+                </p>  
+            </div>
+        </section>
+        <section class="products">
+            <article class="product">
+                <div class="img-product-box">
+                    <img src= "{{url_for('static',filename='./img/products/woman.jpg')}}" class="img-product"alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="{{url_for('productosfemeninos')}}">ROPA <br>FEMENINA</a> 
+                </div>          
+            </article>
+    
+            <article class="product">
+                <div>
+                    <img src= "{{url_for('static',filename='./img/products/men.jpg')}}" alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="#">ROPA <br>MASCULINA</a>
+                </div> 
+            </article>
+            <article class="product">
+                <div>
+                    <img src= "{{url_for('static',filename='./img/products/baby.jpg')}}" alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="#">ROPA DE BEBÉS</a>
+                </div> 
+            </article>
+            <article class="product">
+                <div>
+                    <img src= "{{url_for('static',filename='./img/products/shoes.jpg')}}" alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="#">CALZADO</a>
+                </div> 
+            </article>
+            <article class="product">
+                <div>
+                    <img src= "{{url_for('static',filename='./img/products/others.jpg')}}" alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="#">ACCESORIOS</a>
+                </div> 
+            </article>
+            <article class="product">
+                <div>
+                    <img src= "{{url_for('static',filename='./img/products/homeproduct.jpg')}}"alt="">
+                </div>
+                <div class="txt-product">
+                    <a class="enlace-mujer" href="#">PRODUCTOS DEL HOGAR</a>
+                </div> 
+            </article>
+        </section>
+        <div class="semi-footer">
+            <p class="title-initial"> ¡Ven y visitanos! </p>
+        </div>
+    
+    
+    </body>
 
     {% endblock %}
 

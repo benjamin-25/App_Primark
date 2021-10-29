@@ -1,0 +1,40 @@
+{% if nombre %}
+
+    {% extends './User/layout_user.html' %}
+
+    {% block conten %}
+  
+        <h2>Compras</h2>
+  
+    {% endblock %}
+
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {%  block contenido %}
+
+
+       
+        <body>
+            <form action=""  method="POST" >
+                <div class="cont-indv">
+                    <div class="img-indv">
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <div class="descp-indv">
+                            <p class="p-indv"></p>
+                            <p class="p-indv"></p>
+                         </div>
+                         <div class="button-ind">
+                             <input type="submit" class="button-indv" name="submit-button" value="Compra este producto"> 
+                         </div>
+                    </div>
+                </div>
+            </form>
+        </body>
+
+    {%  endblock %}
+
+{% endif %}

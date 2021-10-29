@@ -1,0 +1,52 @@
+{% if nombre %}
+
+    {% extends './User/layout_user.html' %}
+
+    {% block conten %}
+  
+        <h2>Compras</h2>
+  
+    {% endblock %}
+
+{% else %}
+
+    {% extends 'layout.html' %}
+
+    {%  block contenido %}
+
+        <head>
+            <meta name="viewport" content="width=device-width, initial scale=1.0">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="{{url_for('static',filename='./css/style.css')}}">
+        </head>
+
+        <body>
+           <div class="padre">
+                <section class="header">
+                    <h2 class="title-initial"> Productos para la Mujer</h2>
+                    <p class="sub-initial">Disfruta nuestra última colección </p>
+                </section>
+        
+                <section class="product-indv-section">
+                    {% for fila in range(1) %}
+                    {% for name in range(9) %}
+                    <div class="indv-prod"> 
+                        <div class="indv-img-prod">
+                            <img class="indv-img-prod-i" src="{{url_for('static',filename='./img/products/woman/'+LPF[name][0]+'.jpg')}}"  alt="">
+                        </div>
+                        <div class="indv-text-prod">
+                            <p class="t-indv-text-prod"> {{LPF[name][0].title()}} </p> 
+                            <p class="pr-indv-text-prod">${{ LPrF[name][0]}}00 </p> 
+                        </div>
+                    </div>
+                    {% endfor %} {% endfor %}
+                </section>
+           </div>
+        </body>
+
+    {%  endblock %}
+
+{% endif %}
