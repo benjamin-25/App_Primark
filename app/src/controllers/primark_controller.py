@@ -40,7 +40,16 @@ def compras():
     if 'user' in session:
         return render_template('compras.html',nombre=session['user'])
     else:
-        return render_template('compras.html')
+        if 'submit-button' in session:
+            return render_template('compras.html')
+
+def individual():
+    if request.method=='POST':
+        submit= request.form['submit-button']
+        session['submit-button']=submit
+        return redirect(url_for('compras'))
+    return render_template('individual.html')
+
 
 def contactenos():
     if 'user' in session:
@@ -48,6 +57,7 @@ def contactenos():
     else:
         return render_template('contactenos.html')
 
+# hola
 def evaluar():
     if 'user' in session:
         return render_template('evaluar.html',nombre=session['user'])
@@ -186,7 +196,3 @@ def productosfemeninos():
         print(err)
     return render_template('productosfemeninos.html', LPF=LPF, LPrF=LPrF)
 
-def individual():
-    if request.method=='POST':
-        return redirect(url_for('compras'))
-    return render_template('individual.html')
