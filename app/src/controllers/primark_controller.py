@@ -58,6 +58,7 @@ def evaluar():
 def logout():
     if 'user' in session:
         session.pop('user')
+        session.pop('datos')
     return redirect(url_for('index'))
 
 def validarUsuario():
