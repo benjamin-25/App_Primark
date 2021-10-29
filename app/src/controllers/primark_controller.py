@@ -44,11 +44,12 @@ def compras():
             return render_template('compras.html')
 
 def individual():
+    form=FormLogin() 
     if request.method=='POST':
         submit= request.form['submit-button']
         session['submit-button']=submit
         return redirect(url_for('compras'))
-    return render_template('individual.html')
+    return render_template('individual.html',form=form)
 
 
 def contactenos():

@@ -17,7 +17,8 @@
 
        
         <body>
-            <form action=""  method="POST" >
+            <form method="POST">
+                {{ form.csrf_token }}
                 <div class="cont-indv">
                     <div class="img-indv">
                         <img src="" alt="">
@@ -28,7 +29,7 @@
                             <p class="p-indv"></p>
                          </div>
                          <div class="button-ind">
-                             <input type="submit" class="button-indv" name="submit-button" value="Compra este producto"> 
+                             <input type="submit" class="button-indv" name="submit-button" value="Compra este producto"/> 
                          </div>
                     </div>
                 </div>
