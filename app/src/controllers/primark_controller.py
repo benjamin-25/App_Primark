@@ -117,22 +117,22 @@ def registrarUsuario():
         
         pwd = generate_password_hash(contraseña)
         
-        resul=consultaPersona(correo)
-
-        if resul!=0:
+        resul1=consultaPersona(correo)
+        
+        if resul1==0:
             error2=True
             return render_template('signin.html',error=error2, form=formSig)
         
         else:
             
             resultado=crearPersona(tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd)    
-
+            
             if resultado!=0:
                 flash('Estupendo, Registrado Exitosamente!!')
                 return redirect(url_for('signin'))
 
             else:
-
+                
                 error=True
                 return render_template('signin.html',error=error, form=formSig)
 

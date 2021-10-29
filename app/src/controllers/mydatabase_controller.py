@@ -48,10 +48,12 @@ def crearPersona(tipo,documento,primer_nombre,segundo_nombre,primer_apellido,seg
         CursorObj=con.cursor()
         resultado=CursorObj.execute(sql,[tipo,documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,TipoUser,Permiso,correo,pwd]).rowcount
         con.commit()
-        close_db()
-        
+        con.close()
+    
 
     except Error as err:
         print(err)
 
     return resultado
+
+    

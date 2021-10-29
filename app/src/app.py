@@ -19,8 +19,8 @@ def create_app():
     app.config['SECRET_KEY'] = SECRET_KEY
 
     # register each active blueprint
-    for url, blueprint in ACTIVE_ENDPOINTS:
-        app.register_blueprint(blueprint, url_prefix=url)
+    for url, Blueprint in ACTIVE_ENDPOINTS:
+        app.register_blueprint(Blueprint, url_prefix=url)
 
     return app
 
