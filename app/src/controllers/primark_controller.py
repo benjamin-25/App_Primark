@@ -168,4 +168,25 @@ def registrarUsuario():
 
     error=True
     return render_template('signin.html',error=error, form=formSig)
-        
+
+def productosfemeninos():
+    con=connection()
+    try:
+        cursor=con.cursor()
+        query="SELECT NombreProducto FROM Productos WHERE Categoria='F' "
+        LPF=cursor.execute(query).fetchall()
+    except Error as err:
+        print(err)
+
+    try:
+        cursor=con.cursor()
+        query="SELECT Precio FROM Productos WHERE Categoria='F' "
+        LPrF=cursor.execute(query).fetchall()
+    except Error as err:
+        print(err)
+    return render_template('productosfemeninos.html', LPF=LPF, LPrF=LPrF)
+
+def individual():
+    if request.method=='POST':
+        return redirect(url_for('compras'))
+    return render_template('individual.html')
